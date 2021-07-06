@@ -3,10 +3,15 @@ from flask import Flask, request, render_template
 app = Flask(__name__)
 
 
-@app.route('/')
+@app.route('/') #Mapping multiple URLS to the same page.
 @app.route('/<user>')
 def index(user=None):
-    return render_template("user.html", user=user)
+    return render_template("user.html", user=user) #user.html provides two different pages depending on the url passed in. So i.e. you get a general homepage or a personalised one.
+
+@app.route('/shopping')
+def shopping():
+    food = ['pizza', 'chocolate', 'bananas', 'bagels', 'chicken', 'oranges']
+    return render_template("shopping.html", food=food)
 
 # @app.route('/profile/<name>')
 # def profile(name):

@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <!-- The curly brackets and % mark python/flask code -->
-{% if user %} 
+{% if user: %} 
     <h1>Hello {{ user }}</h1>
 
-{% else %}
+{% else: %}
     <h1>Please log in</h1>
 
 {% endif %}
