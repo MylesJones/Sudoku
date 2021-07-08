@@ -1,4 +1,6 @@
 from flask.scaffold import F
+import random
+import linecache
 
 
 class Puzzle:
@@ -14,6 +16,31 @@ class Puzzle:
         # fill in the board to test the html.
         for i in range(9):
             self.grid.append([" ", " ", " ", " ", " ", " ", " ", " ", " "])
+
+    
+    def genNewPuzzle(self):
+        lineDict = {}
+        n = random.randrange(10000)
+        print(n)
+        try:
+            line = linecache.getline("sudokus.txt", n)[:-1]
+            print(line)
+            print(len(line))
+        except:
+            print("An error has occurred")
+        else:
+            for i in range(9):
+                lineDict[i] = line[(i*9): ((i + 1) * 9)]
+                aList = []
+                for char in lineDict[i]:
+                    if char == "0":
+                        char = " "
+                    aList.append(char)
+                self.grid[i] = aList
+                print(self.grid[i])
+
+            
+
 
     def isOver(self):
         """
@@ -52,6 +79,7 @@ class Puzzle:
 
 if __name__ == "__main__":
     sudoku = Puzzle()
+    sudoku.genNewPuzzle()
     # print(sudoku.__containsDuplicates([1, 2, 3, 4, 5, 6, 7, 8, 9]) == False)
     # print(sudoku.__containsDuplicates([1, 2, 3, 2, 4, 5, 6, 8, 9]) == True)
     
