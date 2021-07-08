@@ -9,9 +9,11 @@ class Puzzle:
     def __init__(self):
         self.grid = []
 
-        #fill in the board to test the html.
+        #The way the grid is formated in the page is of the form grid[y][x], where the y value is the rows.
+
+        # fill in the board to test the html.
         for i in range(9):
-            self.grid.append([1, 2, 3, 4, 5, 6, 7, 8, 9])
+            self.grid.append([" ", " ", " ", " ", " ", " ", " ", " ", " "])
 
     def isOver(self):
         """
