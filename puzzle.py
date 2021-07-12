@@ -21,11 +21,11 @@ class Puzzle:
     def genNewPuzzle(self):
         lineDict = {}
         n = random.randrange(10000)
-        print(n)
+        # print(n)
         try:
             line = linecache.getline("sudokus.txt", n)[:-1]
-            print(line)
-            print(len(line))
+            # print(line)
+            # print(len(line))
         except:
             print("An error has occurred")
         else:
@@ -34,10 +34,10 @@ class Puzzle:
                 aList = []
                 for char in lineDict[i]:
                     if char == "0":
-                        char = " "
+                        char = ""
                     aList.append(char)
                 self.grid[i] = aList
-                print(self.grid[i])
+                # print(self.grid[i])
 
             
 

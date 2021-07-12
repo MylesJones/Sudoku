@@ -1,3 +1,10 @@
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+
 h1 {
   text-align: center;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
@@ -15,12 +22,30 @@ td {
   border:1px solid;
   text-align:center;
 }
-td:first-child {
+
+input {
+  border: none;
+  text-align: center;
+  display: flex;
+  -moz-appearance: textfield;
+  background-color: transparent;
+  width: 100%;
+
+}
+
+td:hover {
+  background-color: lightblue;
+}
+
+/* style every <td> element with a left border that is the first child of its parent (<tr>): */
+td:first-child { 
   border-left:solid;
 }
+/* Similar to above, starting from n=0 with right border */
 td:nth-child(3n) {
   border-right:solid ;
 }
+/* Same again but for horizontal lines */
 tr:first-child {
   border-top:solid;
 }

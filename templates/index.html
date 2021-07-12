@@ -12,51 +12,21 @@
 
         <table>
             <tbody>
-                <tr>
-                    {% for i in range(9): %}
-                        <td> {{ grid[0][i] }}</td>
-                    {% endfor %}
-                </tr>
-                <tr>
-                    {% for i in range(9): %}
-                        <td> {{ grid[1][i] }}</td>
-                    {% endfor %}
-                </tr>
-                <tr>
-                    {% for i in range(9): %}
-                        <td> {{ grid[2][i] }}</td>
-                    {% endfor %}
-                </tr>
-                <tr>
-                    {% for i in range(9): %}
-                        <td> {{ grid[3][i] }}</td>
-                    {% endfor %}
-                </tr>
-                <tr>
-                    {% for i in range(9): %}
-                        <td> {{ grid[4][i] }}</td>
-                    {% endfor %}
-                </tr>
-                <tr>
-                    {% for i in range(9): %}
-                        <td> {{ grid[5][i] }}</td>
-                    {% endfor %}
-                </tr>
-                <tr>
-                    {% for i in range(9): %}
-                        <td> {{ grid[6][i] }}</td>
-                    {% endfor %}
-                </tr>
-                <tr>
-                    {% for i in range(9): %}
-                        <td> {{ grid[7][i] }}</td>
-                    {% endfor %}
-                </tr>
-                <tr>
-                    {% for i in range(9): %}
-                        <td> {{ grid[8][i] }}</td>
-                    {% endfor %}
-                </tr>
+                {% for j in range(9) %}
+                    <tr>
+                        {% for i in range(9): %}
+                            {% if grid[j][i] == "": %}
+                                <td>
+                                    <input type="number" min="1" max="9">
+                                </td>
+                            {% else: %}
+                                <td>
+                                    <b>{{ grid[j][i] }}</b>
+                                </td>
+                            {% endif %}
+                        {% endfor %}
+                    </tr>
+                {% endfor %}    
             </tbody>
         </table>
     </body>
