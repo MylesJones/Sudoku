@@ -15,13 +15,14 @@ class Puzzle:
 
         # fill in the board to test the html.
         for i in range(9):
-            self.grid.append([" ", " ", " ", " ", " ", " ", " ", " ", " "])
+            self.grid.append([])
+        self.genNewPuzzle()
 
     
     def genNewPuzzle(self):
         lineDict = {}
         n = random.randrange(10000)
-        # print(n)
+        print(n)
         try:
             line = linecache.getline("sudokus.txt", n)[:-1]
             # print(line)
