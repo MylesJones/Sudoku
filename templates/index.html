@@ -5,32 +5,15 @@
         Sudoku!
     </title>
 
-    <link rel='stylesheet' type='text/css' href="{{ url_for('static', filename='style.css') }}">
+    <link rel='stylesheet' type='text/css' href="{{ url_for('static', filename='titlepage.css') }}">
 
     <body>
         <h1>Welcome to Sudoku!</h1>
-        <form action="/" method="POST">
-            <table>
-                <tbody>
-                    {% for j in range(9) %}
-                        <tr>
-                            {% for i in range(9): %}
-                                {% if grid[j][i] == "": %}
-                                    <td>
-                                        <input type="number" min="1" max="9">
-                                    </td>
-                                {% else: %}
-                                    <td>
-                                        <b>{{ grid[j][i] }}</b>
-                                    </td>
-                                {% endif %}
-                            {% endfor %}
-                        </tr>
-                    {% endfor %}    
-                </tbody>
-            </table>
+        <form action="/game/{{ n }}" method="POST">
 
-            <!-- <p><input type="submit" value="Submit" /></p> -->
+            <input type="submit" value="Generate a random puzzle!">
+
+
         </form>
     </body>
 </html>
