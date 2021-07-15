@@ -9,7 +9,7 @@
 
     <body>
         <h1>Welcome to Sudoku!</h1>
-        <form action="/" method="POST">
+        <form method="POST">
             <table>
                 <tbody>
                     {% for j in range(9) %}
@@ -17,7 +17,7 @@
                             {% for i in range(9): %}
                                 {% if grid[j][i] == "": %}
                                     <td>
-                                        <input type="number" min="1" max="9">
+                                        <input type="number" name = "{{ j }}/{{ i }}" min="1" max="9">
                                     </td>
                                 {% else: %}
                                     <td>
@@ -30,7 +30,7 @@
                 </tbody>
             </table>
 
-            <!-- <p><input type="submit" value="Submit" /></p> -->
+            <input type="submit" value="Submit" />
         </form>
     </body>
 </html>

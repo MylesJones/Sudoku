@@ -14,11 +14,19 @@ def index():
 @app.route("/game/<n>", methods=['GET', 'POST'])
 def game(n):
     game = Puzzle(int(n))
-    data = request.form
+    data = dict(request.form)
     #update grid with new input
-    print(data)
+    game.grid = updateGrid(game, data)
+    print(game.grid)
+    
     return render_template("game.html", grid=game.grid)
 
+def updateGrid(game, data):
+    for index, value in data.items():
+        if not value == "":
+            j,i = int(index[0]), int(index[2])
+            game.grid[j][i] == value
+    return game.grid
 
 
 
