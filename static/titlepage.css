@@ -3,3 +3,9 @@ h1 {
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   font-size: 80px;
 }
+
+div {
+  position: relative;
+  top: 40px;
+  left: 720px;
+}

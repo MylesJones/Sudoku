@@ -13,7 +13,7 @@ def index():
 
 @app.route("/game/<n>", methods=['GET', 'POST'])
 def game(n):
-    game = Puzzle(int(n))
+    game = Puzzle(int(n)) #Maybe move this logic into the html? Don't really want to though.
     data = dict(request.form)
     #update grid with new input
     game.grid = updateGrid(game, data)
@@ -25,7 +25,7 @@ def updateGrid(game, data):
     for index, value in data.items():
         if not value == "":
             j,i = int(index[0]), int(index[2])
-            game.grid[j][i] == value
+            game.grid[j][i] = value
     return game.grid
 
 

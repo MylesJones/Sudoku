@@ -23,7 +23,14 @@ td {
   text-align:center;
 }
 
-input {
+div {
+  position: relative;
+  top: 40px;
+  left: 835px;
+}
+
+
+.squares {
   border: none;
   text-align: center;
   display: flex;
