@@ -13,20 +13,27 @@ def index():
 
 @app.route("/game/<n>", methods=['GET', 'POST'])
 def game(n):
-    game = Puzzle(int(n)) #Maybe move this logic into the html? Don't really want to though.
+    game = Puzzle(int(n))
+    templateGame = Puzzle(int(n))
     data = dict(request.form)
     #update grid with new input
-    game.grid = updateGrid(game, data)
-    print(game.grid)
-    
-    return render_template("game.html", grid=game.grid)
+    game.grid, isOver = updateGrid(game, data)
+
+    if isOver:
+        if game.isLegal():
+            return render_template("complete.html", n=n)
+    return render_template("game.html", grid=game.grid, templateGrid = templateGame.grid)
 
 def updateGrid(game, data):
+    isOver = True
     for index, value in data.items():
         if not value == "":
             j,i = int(index[0]), int(index[2])
             game.grid[j][i] = value
-    return game.grid
+        else:
+            isOver = False
+
+    return (game.grid, isOver)
 
 
 

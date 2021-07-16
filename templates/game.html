@@ -22,6 +22,10 @@
                                     <td>
                                         <input type="number" class = "squares" name = "{{ j }}/{{ i }}" min="1" max="9">
                                     </td>
+                                {% elif templateGrid[j][i] == "": %}
+                                    <td>
+                                        <input type="number" class="answeredSquares" id = "blue" name="{{ j }}/{{ i }}" min="1" max="9" value= "{{ grid[j][i] }}">
+                                    </td>
                                 {% else: %}
                                     <td>
                                         <b>{{ grid[j][i] }}</b>

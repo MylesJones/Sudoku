@@ -29,8 +29,12 @@ div {
   left: 835px;
 }
 
+#blue {
+  color: blue;
+}
 
-.squares {
+
+.squares, .answeredSquares {
   border: none;
   text-align: center;
   display: flex;
