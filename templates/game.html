@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+
+<html>
+    <title>
+        Sudoku!
+    </title>
+
+    <link rel='stylesheet' type='text/css' href="{{ url_for('static', filename='style.css') }}">
+
+    <body>
+        <h1>Welcome to Sudoku!</h1>
+        
+        <hr>
+    
+        <form method="POST">
+            <table>
+                <tbody>
+                    {% for j in range(9) %}
+                        <tr>
+                            {% for i in range(9): %}
+                                {% if grid[j][i] == "": %}
+                                    <td>
+                                        <input type="number" class = "squares" name = "{{ j }}/{{ i }}" min="1" max="9">
+                                    </td>
+                                {% elif templateGrid[j][i] == "": %}
+                                    <td>
+                                        <input type="number" class="answeredSquares" id = "blue" name="{{ j }}/{{ i }}" min="1" max="9" value= "{{ grid[j][i] }}">
+                                    </td>
+                                {% else: %}
+                                    <td>
+                                        <b>{{ grid[j][i] }}</b>
+                                    </td>
+                                {% endif %}
+                            {% endfor %}
+                        </tr>
+                    {% endfor %}    
+                </tbody>
+            </table>
+
+            <hr>
+
+            <div>
+                <input type="submit" id = "checker" value="Submit" />
+            </div>
+            
+        </form>
+    </body>
+</html>

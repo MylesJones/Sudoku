@@ -23,7 +23,18 @@ td {
   text-align:center;
 }
 
-input {
+div {
+  position: relative;
+  top: 40px;
+  left: 835px;
+}
+
+#blue {
+  color: blue;
+}
+
+
+.squares, .answeredSquares {
   border: none;
   text-align: center;
   display: flex;

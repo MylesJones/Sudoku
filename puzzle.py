@@ -1,5 +1,5 @@
 from flask.scaffold import F
-import random
+
 import linecache
 
 
@@ -8,20 +8,20 @@ class Puzzle:
     A class that will hold logic for the sudoku board, including the numbers, their positions and board methods.
     """
 
-    def __init__(self):
+    def __init__(self, n):
         self.grid = []
 
         #The way the grid is formated in the page is of the form grid[y][x], where the y value is the rows.
 
         # fill in the board to test the html.
         for i in range(9):
-            self.grid.append([" ", " ", " ", " ", " ", " ", " ", " ", " "])
+            self.grid.append([])
+        self.genNewPuzzle(n)
 
     
-    def genNewPuzzle(self):
+    def genNewPuzzle(self, n):
         lineDict = {}
-        n = random.randrange(10000)
-        # print(n)
+        
         try:
             line = linecache.getline("sudokus.txt", n)[:-1]
             # print(line)
