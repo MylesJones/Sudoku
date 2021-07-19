@@ -16,24 +16,25 @@ def game(n):
     game = Puzzle(int(n))
     templateGame = Puzzle(int(n))
     data = dict(request.form)
-    #update grid with new input
-    game.grid, isOver = updateGrid(game, data)
+    #update grid with new input, check if grid is full.
+    game.grid, isFull = updateGrid(game, data)
 
-    if isOver:
+    if isFull:
         if game.isLegal():
             return render_template("complete.html", n=n)
+    
     return render_template("game.html", grid=game.grid, templateGrid = templateGame.grid)
 
 def updateGrid(game, data):
-    isOver = True
+    isFull = True
     for index, value in data.items():
         if not value == "":
             j,i = int(index[0]), int(index[2])
             game.grid[j][i] = value
         else:
-            isOver = False
+            isFull = False
 
-    return (game.grid, isOver)
+    return (game.grid, isFull)
 
 
 

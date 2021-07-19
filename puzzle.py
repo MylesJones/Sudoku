@@ -57,13 +57,31 @@ class Puzzle:
         """
         Check if the board is legal.
         """
-
+        #Check rows
         for i in range(9):
             if self.__containsDuplicates(self.grid[i]):
                 return False
         
-        #add more logic for the other axis
-
+        #Check columns
+        for j in range(9):
+            columnList = []
+            for i in range(9):
+                columnList.append(self.grid[i][j])
+            if self.__containsDuplicates(columnList):
+                return False
+        
+        #check squares
+        #Loop through the rows 3 at a time.
+        for n in range(3):
+            #For each set of 3 rows loop through the columns 3 at a time.
+            for m in range(3):
+                square = []
+                for k1 in range(3*n, 3*n+3):
+                    for k2 in range(3*m, 3*m+3):
+                        square.append(self.grid[k1][k2])
+                
+                if self.__containsDuplicates(square):
+                    return False
         return True
 
 
@@ -71,6 +89,9 @@ class Puzzle:
 
     @staticmethod
     def __containsDuplicates(aList):
+        """
+        return True if a list contains a duplicate, false otherwise.
+        """
         for i in range(len(aList)):
             if aList[i] in aList[i+1:]:
                 return True
