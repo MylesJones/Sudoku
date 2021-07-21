@@ -18,17 +18,17 @@
                     {% for j in range(9) %}
                         <tr>
                             {% for i in range(9): %}
-                                {% if grid[j][i] == "": %}
+                                {% if game.grid[j][i] == "": %}
                                     <td>
                                         <input type="number" class = "squares" name = "{{ j }}/{{ i }}" min="1" max="9">
                                     </td>
-                                {% elif templateGrid[j][i] == "": %}
+                                {% elif game.rawGrid[j][i] == "": %}
                                     <td>
-                                        <input type="number" class="answeredSquares" id = "blue" name="{{ j }}/{{ i }}" min="1" max="9" value= "{{ grid[j][i] }}">
+                                        <input type="number" class="answeredSquares" id = "blue" name="{{ j }}/{{ i }}" min="1" max="9" value= "{{ game.grid[j][i] }}">
                                     </td>
                                 {% else: %}
                                     <td>
-                                        <b>{{ grid[j][i] }}</b>
+                                        <b>{{ game.grid[j][i] }}</b>
                                     </td>
                                 {% endif %}
                             {% endfor %}
@@ -39,10 +39,21 @@
 
             <hr>
 
-            <div>
+            <div class = complete>
                 <input type="submit" id = "checker" value="Submit" />
             </div>
-            
+        
         </form>
+
+        <div class = result>
+            <hr>
+            {% if game.madeMistake(): %}
+                <h2 class = mistake>You've made a mistake!</h2>
+            {% elif game.complete %}
+                <h2 class = congrats>You've completed puzzle {{ game.id }}!!</h2>
+            {% endif %}
+        </div>
+
+        
     </body>
 </html>

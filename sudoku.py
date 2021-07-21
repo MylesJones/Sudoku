@@ -14,33 +14,15 @@ def index():
 @app.route("/game/<n>", methods=['GET', 'POST'])
 def game(n):
     game = Puzzle(int(n))
-    templateGame = Puzzle(int(n))
     data = dict(request.form)
-    #update grid with new input, check if grid is full.
-    game.grid, isFull = updateGrid(game, data)
-
-
-
-    if isFull:
-        if game.isLegal():
-            return render_template("complete.html", n=n)
+    game.updateGrid(data)  # update grid with new input, check if grid is full.
+    game.isOver() #think maybe I should include isOver call into updateGrid method to abstract more.
     
-    return render_template("game.html", grid=game.grid, templateGrid = templateGame.grid)
+    
+    return render_template("game.html", game = game)
 
     
-
-def updateGrid(game, data):
-    isFull = True
-    for index, value in data.items():
-        if not value == "":
-            j,i = int(index[0]), int(index[2])
-            game.grid[j][i] = value
-        else:
-            isFull = False
-
-    return (game.grid, isFull)
-
-
 
 if __name__ == "__main__":
     app.run(debug=True)
+
