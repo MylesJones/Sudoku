@@ -38,10 +38,17 @@ td {
   text-align:center;
 }
 
+.inputType {
+  position: absolute;
+  top: 40%;
+  left: 25%;
+
+}
+
 .complete {
   position: relative;
   top: 40px;
-  left: 49%;
+  left: 48.5%;
 }
 
 .result {

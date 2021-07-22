@@ -11,10 +11,15 @@ class Puzzle:
     def __init__(self, n):
         self.grid = []
         self.rawGrid = []
+        self.temporary = "medium"
         self.mistake = False
         self.full = False
         self.complete = False
         self.id = n
+
+        self.onLoadTypeReg = "checked"
+        self.onLoadTypeTemp = ""
+        
 
         self.genNewPuzzle(n)
 
@@ -107,12 +112,23 @@ class Puzzle:
         """
         Takes user input and updates the grid with the new data. It also checks if the grid is full.
         """
+        print(data)
         if data:
             self.full = True
             for index, value in data.items():
                 if not value == "":
-                    j, i = int(index[0]), int(index[2])
-                    self.grid[j][i] = value
+                    try:
+                        j, i = int(index[0]), int(index[2])
+                        self.grid[j][i] = value
+                    except ValueError:
+                        if value == "Temporary":
+                            self.temporary = "small"
+                            self.onLoadTypeTemp = "checked"
+                            self.onLoadTypeReg = ""
+                        else:
+                            self.temporary = "medium"
+                            self.onLoadTypeReg = "checked"
+                            self.onLoadTypeTemp = ""
                 else:
                     self.full = False
 
