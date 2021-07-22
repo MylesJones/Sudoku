@@ -48,9 +48,9 @@
         <div class = result>
             <hr>
             {% if game.madeMistake(): %}
-                <h2 class = mistake>You've made a mistake!</h2>
+                <h2 class = mistake>Uh oh, looks like you've made a mistake!</h2>
             {% elif game.complete %}
-                <h2 class = congrats>You've completed puzzle {{ game.id }}!!</h2>
+                <h2 class = congrats>Congratulations you've completed puzzle {{ game.id }}!!</h2>
             {% endif %}
         </div>
 

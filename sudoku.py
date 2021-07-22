@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+
 from flask import Flask, render_template, request
 from puzzle import *
 import random
@@ -14,11 +16,7 @@ def index():
 @app.route("/game/<n>", methods=['GET', 'POST'])
 def game(n):
     game = Puzzle(int(n))
-    data = dict(request.form)
-    game.updateGrid(data)  # update grid with new input, check if grid is full.
-    game.isOver() #think maybe I should include isOver call into updateGrid method to abstract more.
-    
-    
+    game.submit(dict(request.form))
     return render_template("game.html", game = game)
 
     

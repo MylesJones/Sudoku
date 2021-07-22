@@ -116,7 +116,12 @@ class Puzzle:
                 else:
                     self.full = False
 
-            
+    def submit(self, data):
+        # update grid with new input, check if grid is full.
+        self.updateGrid(data)
+        self.isOver()
+
+        
 
 
 # if __name__ == "__main__":
