@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
     <title>
         Sudoku!
     </title>
@@ -20,7 +20,7 @@
                             {% for i in range(9): %}
                                 {% if game.grid[j][i] == "": %}
                                     <td>
-                                        <input type="number" class = "squares" size = "{{ game.temporary }}" name = "{{ j }}/{{ i }}" min="1" max="9">
+                                        <input type="number" class = "squares" name = "{{ j }}/{{ i }}" min="1" max="9">
                                     </td>
                                 {% elif game.rawGrid[j][i] == "": %}
                                     <td>
@@ -38,14 +38,6 @@
             </table>
 
             <hr>
-
-            <div class=inputType>
-                <input onchange='this.form.submit();' type="radio" id="temp" name="inputType" value="Temporary" {{ game.onLoadTypeTemp }}/>
-                <label for "temp">Temporary</label>
-                <br><br>
-                <input type="radio" id="reg" name="inputType" value="Regular" {{ game.onLoadTypeReg }}/>
-                <label for "reg">Regular</label>
-            </div>
 
             <div class = complete>
                 <input type="submit" id = "checker" value="Submit" />
